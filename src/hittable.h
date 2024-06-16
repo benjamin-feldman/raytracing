@@ -1,8 +1,6 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
-#include "rtweekend.h"
-
 class hit_record {
 public:
   point3 p;
@@ -21,9 +19,10 @@ public:
 
 class hittable {
 public:
+  // Virtual destructor for proper cleanup of derived classes
   virtual ~hittable() = default;
-  virtual bool hit(const ray &r, double ray_tmin, double ray_tmax,
-                   hit_record &rec) const = 0;
+  // Pure virtual function (abstract function)
+  virtual bool hit(const ray &r, interval ray_t, hit_record &rec) const = 0;
 };
 
 #endif
